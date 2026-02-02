@@ -1,82 +1,211 @@
-import json
-import webbrowser
-from datetime import datetime
+from flask import Flask, render_template_string, redirect, url_for, session
 
-DATA_FILE = "devices.json"
+app = Flask(__name__)
+app.secret_key = "kunalclothing"
+
+products = [
+    {"id": 1, "name": "Men T-Shirt", "price": 799, "image": "tshirt.jpg"},
+    {"id": 2, "name": "Women Hoodie", "price": 1299, "image": "hoodie.jpg"},
+    {"id": 3, "name": "Denim Jacket", "price": 1999, "image": "jacket.jpg"},
+    {"id": 4, "name": "Oversized Shirt", "price": 999, "image": "shirt.jpg"}
+]
+
+home_html = """
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kunal Clothing</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{font-family:Poppins;background:#f6f7fb;margin:0}
+header{background:#0f172a;color:white;padding:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:50px;height:50px;border-radius:50%}
+a{color:white;text-decoration:none;font-weight:600}
+
+.container{
+padding:25px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+border-radius:14px;
+padding:15px;
+text-align:center;
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.price{color:#2563eb;font-weight:600}
+
+button{
+background:#0f172a;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{background:#2563eb}
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="topbar">
+<div class="brand">
+<img src="/static/kunal.jpg">
+<h2>Kunal Clothing</h2>
+</div>
+<a href="/cart">🛒 Cart</a>
+</div>
+</header>
+
+<div class="container">
+{% for p in products %}
+<div class="card">
+<img src="/static/{{p.image}}">
+<h3>{{p.name}}</h3>
+<p class="price">₹ {{p.price}}</p>
+
+<form action="/add/{{p.id}}" method="post">
+<button>Add to Cart</button>
+</form>
+</div>
+{% endfor %}
+</div>
+
+</body>
+</html>
+"""
+
+cart_html = """
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body{font-family:Poppins;background:#f6f7fb;margin:0;padding:20px}
+.box{background:white;padding:20px;border-radius:12px;max-width:600px;margin:auto}
+.item{display:flex;justify-content:space-between;margin-bottom:10px}
+a{text-decoration:none;color:#2563eb}
+button{background:#0f172a;color:white;border:none;padding:8px 14px;border-radius:8px}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>Your Cart</h2>
+
+{% if cart %}
+{% for i in cart %}
+<div class="item">
+<span>{{i.name}}</span>
+<span>₹ {{i.price}}</span>
+</div>
+{% endfor %}
+
+<hr>
+<p><b>Total : ₹ {{total}}</b></p>
+
+<form action="/order" method="post">
+<button>Place Final Order</button>
+</form>
+
+<br>
+<a href="/">← Back to shop</a>
+
+{% else %}
+<p>Your cart is empty</p>
+<a href="/">Go shopping</a>
+{% endif %}
+
+</div>
+
+</body>
+</html>
+"""
+
+order_html = """
+<!DOCTYPE html>
+<html>
+<head>
+<title>Order</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<style>
+body{font-family:Poppins;background:#f6f7fb;margin:0}
+.box{
+background:white;
+padding:40px;
+border-radius:14px;
+max-width:500px;
+margin:80px auto;
+text-align:center;
+}
+a{text-decoration:none;color:#2563eb}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>🎉 Order Placed Successfully!</h2>
+<p>Thank you for shopping with</p>
+<h3>Kunal Clothing</h3>
+<br>
+<a href="/">Back to Home</a>
+</div>
+
+</body>
+</html>
+"""
+
+@app.route("/")
+def home():
+    return render_template_string(home_html, products=products)
 
 
-def load_data():
-    try:
-        with open(DATA_FILE, "r") as f:
-            return json.load(f)
-    except:
-        return []
+@app.route("/add/<int:pid>", methods=["POST"])
+def add_to_cart(pid):
+    if "cart" not in session:
+        session["cart"] = []
+
+    for p in products:
+        if p["id"] == pid:
+            session["cart"].append(p)
+
+    session.modified = True
+    return redirect(url_for("home"))
 
 
-def save_data(data):
-    with open(DATA_FILE, "w") as f:
-        json.dump(data, f, indent=4)
+@app.route("/cart")
+def cart():
+    cart = session.get("cart", [])
+    total = sum(i["price"] for i in cart)
+    return render_template_string(cart_html, cart=cart, total=total)
 
 
-def add_device():
-    print("\n--- Add Device (My / Mother / Family) ---")
-    owner = input("Owner name (Me / Mother etc): ")
-    model = input("Phone model: ")
-    imei = input("IMEI: ")
-
-    data = load_data()
-
-    data.append({
-        "owner": owner,
-        "model": model,
-        "imei": imei,
-        "saved_on": str(datetime.now())
-    })
-
-    save_data(data)
-    print("✅ Device added successfully")
-
-
-def show_devices():
-    data = load_data()
-
-    if not data:
-        print("❌ No devices saved")
-        return
-
-    print("\n--- Saved Devices ---")
-    for i, d in enumerate(data, start=1):
-        print(f"{i}. {d['owner']} | {d['model']} | {d['imei']}")
-
-
-def find_device_official():
-    print("\nOpening Google Find My Device (official & legal)...")
-    webbrowser.open("https://www.google.com/android/find")
-
-
-def main():
-    while True:
-        print("\n==============================")
-        print(" Lost Phone Recovery Assistant")
-        print("==============================")
-        print("1. Add device (Me / Mother)")
-        print("2. Show saved devices")
-        print("3. Find device (official Google tool)")
-        print("4. Exit")
-
-        ch = input("Enter choice: ")
-
-        if ch == "1":
-            add_device()
-        elif ch == "2":
-            show_devices()
-        elif ch == "3":
-            find_device_official()
-        elif ch == "4":
-            break
-        else:
-            print("Invalid choice")
+@app.route("/order", methods=["POST"])
+def order():
+    session["cart"] = []
+    return render_template_string(order_html)
 
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)
