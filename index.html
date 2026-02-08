@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kunal Chaudhary | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+}
+
+/* ---------- Navbar ---------- */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:15px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(15,23,42,0.8);
+    backdrop-filter:blur(10px);
+    z-index:100;
+}
+
+nav h2{
+    color:#38bdf8;
+}
+
+nav a{
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:100px 20px 40px;
+}
+
+.hero-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    max-width:1100px;
+    width:100%;
+    align-items:center;
+}
+
+.hero img{
+    width:100%;
+    max-width:350px;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.hero span{
+    color:#38bdf8;
+}
+
+.hero p{
+    margin-top:15px;
+    line-height:1.7;
+    color:#cbd5f5;
+}
+
+.buttons{
+    margin-top:25px;
+}
+
+.buttons a{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:10px;
+    background:#38bdf8;
+    color:#0f172a;
+    text-decoration:none;
+    margin-right:10px;
+    font-weight:600;
+}
+
+/* ---------- Section ---------- */
+
+section{
+    padding:80px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+section h2{
+    text-align:center;
+    margin-bottom:40px;
+    color:#38bdf8;
+}
+
+/* ---------- Skills ---------- */
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.skill{
+    background:#1e293b;
+    padding:20px;
+    border-radius:14px;
+    text-align:center;
+}
+
+/* ---------- Projects ---------- */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.project{
+    background:#1e293b;
+    padding:20px;
+    border-radius:16px;
+}
+
+/* ---------- Social ---------- */
+
+.socials{
+    text-align:center;
+}
+
+.socials a{
+    margin:10px;
+    font-size:22px;
+    color:white;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#94a3b8;
+}
+
+@media(max-width:800px){
+    .hero-box{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+    <h2>Kunal</h2>
+    <div>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+
+<div class="hero" id="about">
+    <div class="hero-box">
+
+        <!-- 👇 Tumhari real photo -->
+        <img src="kunal.jpg" alt="Kunal Photo">
+
+        <div>
+            <h1>Hi, I'm <span>Kunal Chaudhary</span></h1>
+            <p>
+                Class 11 student learning Python and Web Development.
+                I regularly push projects on GitHub and I am preparing
+                for a future in Computer Science, AI and Software Development.
+            </p>
+
+            <div class="buttons">
+                <a href="https://github.com/kunal8433/python" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/kunal-chaudhary-087666380" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SKILLS -->
+
+<section id="skills">
+    <h2>My Skills</h2>
+
+    <div class="skills">
+        <div class="skill">Python</div>
+        <div class="skill">HTML & CSS</div>
+        <div class="skill">Git & GitHub</div>
+        <div class="skill">Basic JavaScript</div>
+        <div class="skill">AI Fundamentals</div>
+        <div class="skill">Problem Solving</div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+    <h2>My Projects</h2>
+
+    <div class="projects">
+
+        <div class="project">
+            <h4>Python Practice Programs</h4>
+            <p>Patterns, logic building and mini programs.</p>
+        </div>
+
+        <div class="project">
+            <h4>Quiz Game in Python</h4>
+            <p>Console based quiz game project.</p>
+        </div>
+
+        <div class="project">
+            <h4>Personal Portfolio Website</h4>
+            <p>This responsive portfolio website.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+    <h2>Connect With Me</h2>
+
+    <div class="socials">
+
+        <a href="https://www.linkedin.com/in/kunal-chaudhary-087666380" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+
+        <a href="https://github.com/kunal8433/python" target="_blank"><i class="fa-brands fa-github"></i></a>
+
+        <a href="https://www.youtube.com/channel/UCWraOu4A-ro0j7gqxjqJW3w" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+
+        <a href="https://x.com/kunal_ch78" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+
+        <a href="https://www.instagram.com/kunal.malik78/?__pwa=1#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 | Kunal Chaudhary – Portfolio
+</footer>
+
+</body>
+</html>
