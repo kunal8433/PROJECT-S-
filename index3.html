@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kunal Chaudhary | Student Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial,sans-serif}
+body{background:#0b0f14;color:#e5e7eb}
+.container{display:grid;grid-template-columns:280px 1fr;min-height:100vh;gap:20px;padding:20px}
+.sidebar{background:#111827;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:18px}
+.avatar{width:110px;height:110px;border-radius:22px;object-fit:cover;border:3px solid #22d3ee;margin:auto}
+.name{text-align:center;font-size:20px;font-weight:700}
+.role{text-align:center;background:#1f2933;padding:6px 12px;border-radius:20px;font-size:12px;color:#22d3ee}
+.info{display:grid;gap:12px;margin-top:10px}
+.info div{background:#0b1220;padding:10px 12px;border-radius:12px;font-size:13px;color:#cbd5f5}
+.main{background:#111827;border-radius:18px;padding:28px}
+.nav{display:flex;gap:18px;justify-content:flex-end;font-size:14px;margin-bottom:20px}
+.nav a{text-decoration:none;color:#cbd5f5}
+.nav a:hover{color:#22d3ee}
+.section{margin-top:30px}
+.section h2{font-size:22px;margin-bottom:16px}
+.about{color:#cbd5f5;line-height:1.7}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:linear-gradient(145deg,#0b1220,#0f172a);border-radius:16px;padding:18px;border:1px solid #1f2937}
+.card h3{color:#22d3ee;margin-bottom:8px}
+.tag{display:inline-block;background:#1f2937;color:#22d3ee;padding:4px 10px;border-radius:999px;font-size:11px;margin:4px 4px 0 0}
+.project{background:#0b1220;border-radius:16px;overflow:hidden;border:1px solid #1f2937}
+.project img{width:100%;height:140px;object-fit:cover;background:#020617}
+.project-body{padding:14px}
+.btn{display:inline-block;margin-top:10px;padding:8px 14px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:600}
+.flex{display:flex;flex-wrap:wrap;gap:16px}
+@media(max-width:900px){.container{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <img src="profile.jpg" class="avatar" alt="Kunal photo">
+  <div class="name">Kunal Chaudhary</div>
+  <div class="role">Student Developer • Python & AI Learner</div>
+
+  <div class="info">
+    <div>📘 Class 11 (PCM)</div>
+    <div>🎯 B.Tech CSE Aspirant</div>
+    <div>🧠 Learning: Python, AI, Web Dev</div>
+    <div>🛠 VS Code, GitHub, Git</div>
+  </div>
+</aside>
+
+<!-- Main content -->
+<main class="main">
+
+<nav class="nav">
+  <a href="#about">About</a>
+  <a href="#services">What I Do</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about" class="section">
+  <h2>About Me</h2>
+  <p class="about">
+    I am a Class 11 (PCM) student and an aspiring Computer Science engineer. I actively practice Python,
+    share my learning on LinkedIn and X, and build small projects on GitHub. Currently, I am learning
+    Artificial Intelligence with Python through Udacity and preparing myself for a strong B.Tech in CSE.
+  </p>
+</section>
+
+<section id="services" class="section">
+  <h2>What I'm Doing</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Python Development</h3>
+      <p>Logic building, basic DSA and clean Python programs.</p>
+    </div>
+    <div class="card">
+      <h3>Web Development</h3>
+      <p>HTML, CSS and learning modern front-end basics.</p>
+    </div>
+    <div class="card">
+      <h3>Artificial Intelligence</h3>
+      <p>Learning AI with Python (Udacity course).</p>
+    </div>
+    <div class="card">
+      <h3>Content & Learning Sharing</h3>
+      <p>Posting learning progress on LinkedIn, X and Instagram.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <h2>Skills & Tools</h2>
+  <div class="card">
+    <span class="tag">Python</span>
+    <span class="tag">HTML</span>
+    <span class="tag">CSS</span>
+    <span class="tag">Git</span>
+    <span class="tag">GitHub</span>
+    <span class="tag">VS Code</span>
+    <span class="tag">AI with Python</span>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <h2>Portfolio</h2>
+  <div class="cards">
+
+    <div class="project">
+      <img src="" alt="">
+      <div class="project-body">
+        <h3>Python Practice & Mini Projects</h3>
+        <p style="color:#cbd5f5">Beginner friendly logic based programs.</p>
+        <a class="btn" style="background:#24292e;color:#fff" target="_blank" href="https://github.com/kunal8433/python">View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="" alt="">
+      <div class="project-body">
+        <h3>Personal Portfolio Website</h3>
+        <p style="color:#cbd5f5">Responsive portfolio using HTML & CSS.</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="" alt="">
+      <div class="project-body">
+        <h3>Future AI Project</h3>
+        <p style="color:#cbd5f5">AI project based on Udacity learning (coming soon).</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Connect With Me</h2>
+  <div class="flex">
+
+    <a class="btn" style="background:#0a66c2;color:#fff" target="_blank" href="https://www.linkedin.com/in/kunal-chaudhary-087666380">LinkedIn</a>
+    <a class="btn" style="background:#24292e;color:#fff" target="_blank" href="https://github.com/kunal8433/python">GitHub</a>
+    <a class="btn" style="background:#000;color:#fff" target="_blank" href="https://x.com/kunal_ch78">X (Twitter)</a>
+    <a class="btn" style="background:#ff0000;color:#fff" target="_blank" href="https://www.youtube.com/channel/UCWraOu4A-ro0j7gqxjqJW3w">YouTube</a>
+    <a class="btn" style="background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);color:#fff" target="_blank" href="https://www.instagram.com/kunal.malik78/?__pwa=1#">Instagram</a>
+
+  </div>
+</section>
+
+</main>
+</div>
+
+</body>
+</html>
