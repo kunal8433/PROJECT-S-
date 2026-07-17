@@ -1,4 +1,4 @@
-# Python Projects 🐍
+# Python Basic Projects 🐍
 
 This repository contains my Python practice projects.
 
