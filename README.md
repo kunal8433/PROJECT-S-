@@ -4,8 +4,8 @@ This repository contains my Python practice projects.
 
 I built these projects while learning Python and improving my programming skills.
 
-## Projects Included
-
+## Projects Included..
+*##
 * Calculator
 * Number Guessing Game
 * Simple Quiz Program
